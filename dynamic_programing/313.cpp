@@ -1,5 +1,5 @@
-#include <iostream>
 using namespace std;
+#include <iostream>
 #include <vector>
 #include <math.h>
 
@@ -12,16 +12,13 @@ public:
         vector<int> m_list = vector<int>(num, 0);
         vector<int> ans = {1};
         int i=0;
-        int minnum;
+        int minnum = ans[0] * primes[0];
         while(i<n){
-            minnum = ans[m_list[0]] * primes[0];
             for (int j=0; j<num; j++){
                 int factor = primes[j];
                 int index = m_list[j];
                 minnum = min(minnum, ans[index] * factor);
-                //cout << factor <<" "<< index<< " "<<minnum<<endl;
             }
-            ans.push_back(minnum);
             for (int j=0; j<num; j++){
                 int factor = primes[j];
                 int index = m_list[j];
@@ -31,13 +28,6 @@ public:
             }
             i++;
         }
-        return ans[i-1];
+    return ans[i-1];
     }
 };
-
-int main() {
-    vector<int> primes = {2,7,13,19};
-    Solution solution = Solution();
-    cout << solution.nthSuperUglyNumber(12, primes);
-    return 0;
-}
