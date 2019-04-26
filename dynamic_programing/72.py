@@ -10,7 +10,8 @@
 动态规划：
 两个指针i，j分别指向word1和word2
 定义dp[i][j]表示word1[:i]转换成word2[:j]需要的最少步骤
-如果word1[i] == word2[j]时：
+初始化时，dp[i][0] = i, dp[0][j] = j
+如果word1[i-1] == word2[j-1]时：
     dp[i][j] = dp[i-1][j-1]  // 什么都不需要做
 反之，如果word1[i] == word2[j]时：
     dp[i][j] = min(
